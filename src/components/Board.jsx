@@ -4,6 +4,7 @@ import {initGrid} from "../utils/init-grid";
 import { useEffect, useState } from "react";
 import { openAdjacentEmpty } from "../utils/open-adjacent-empty";
 import { revealBoard } from "../utils/reveal-board";
+import { countClosed } from "../utils/countClosed";
 
 
 export default function Board({board}) {
@@ -34,6 +35,12 @@ export default function Board({board}) {
         if(grid[row][column].adjacentMines === 0) {
             newGrid = openAdjacentEmpty(row, column, newGrid)
         }  
+        
+        if(countClosed(newGrid) === board.mines) {
+            setResult("You won!!")
+            newGrid = revealBoard(grid)
+        }
+        
         setGrid(newGrid)
     } 
 
