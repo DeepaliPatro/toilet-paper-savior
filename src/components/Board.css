@@ -1,3 +1,7 @@
+.board {
+    width: fit-content;
+    margin: 5em auto;
+}
 .columns {
     display: flex;
     flex-direction: column;

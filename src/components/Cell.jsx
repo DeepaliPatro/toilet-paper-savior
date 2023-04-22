@@ -1,17 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Cell.css'
 
-export default function Cell({cell, onClick}) {
+export default function Cell({cell, onOpen, onFlag, onEndGame}) {
 
-    const [cellState, setCellState] = useState(cell)
     const [value, setValue] = useState('')
 
     const handleClick = () => {  
-        setCellState({...cellState, isOpen: true})
-        setValue(cell.isMine ? '🦠' :  cell.adjacentMines ? cell.adjacentMines : '')
+        onOpen()
+        if(cell.isMine) {onEndGame("You lost.")}
+    }
+    const handleFlag = e => {
+        e.preventDefault()
+        onFlag()
+        setValue(getValue()) // update marker for every flag
+    }
+
+    useEffect(() => {setValue(getValue())}, [cell.isOpen]) // update value when any cell is opened
+
+    function getValue() {
+        let cellValue = ''
+        if(!cell.isOpen) {
+            cellValue = cell.isFlagged ? '🧻' : ''
+        } else if (cell.isMine) {
+            cellValue = '🦠'
+        } else if (cell.adjacentMines === 0) {
+           cellValue = ''
+        } else {
+            cellValue = cell.adjacentMines
+        }
+        return cellValue
     }
 
     return (
-        <div className="cell" onClick={handleClick}>{value}</div>
+        <div className={cell.isOpen ? "cell open" : "cell"} onClick={handleClick} onContextMenu={handleFlag} >{value}  </div>
     )
 }

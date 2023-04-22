@@ -5,9 +5,11 @@ function createNewGrid(rows, columns) {
         grid.push([])
         for(let column = 0; column < columns; column++) {
             let cellState = {
+                // pos: {row, column},
                 isMine: false,
                 adjacentMines: 0,
                 isOpen: false,
+                isFlagged: false,
             }
             grid[row].push(cellState)
         }
