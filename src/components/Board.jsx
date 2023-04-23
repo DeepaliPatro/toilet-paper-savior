@@ -40,7 +40,7 @@ export default function Board({board}) {
             setResult("You won!!")
             newGrid = revealBoard(grid)
         }
-        
+
         setGrid(newGrid)
     } 
 
@@ -52,7 +52,9 @@ export default function Board({board}) {
     
     return (
         <div className="board">
-            <h1 className="message">{result}</h1>
+            <header>
+                <h1 className="message">{result}</h1>
+            </header>
             <div className="grid">
                 <div className="rows">
                     {grid?.map((row, rowIndex) => {
@@ -61,6 +63,7 @@ export default function Board({board}) {
                                 {row.map((cell, columnIndex) => {
                                     return (
                                     <Cell cell={cell}
+                                        result={result}
                                         onEndGame={setResult}
                                         onOpen={() => handleOpenCell(rowIndex, columnIndex)} 
                                         onFlag={() => onFlag(rowIndex, columnIndex)} key={[rowIndex, columnIndex]} />

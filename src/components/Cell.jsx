@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react'
 import './Cell.css'
+import { Typography } from '@mui/material'
 
-export default function Cell({cell, onOpen, onFlag, onEndGame}) {
-
+export default function Cell({cell, onOpen, onFlag, result, onEndGame}) {
     const [value, setValue] = useState('')
 
     const handleClick = () => {  
         onOpen()
-        if(cell.isMine) {onEndGame("You lost.")}
+        if(cell.isMine) {
+            onEndGame("You lost.")
+        }
     }
+    
     const handleFlag = e => {
         e.preventDefault()
         onFlag()
         setValue(getValue()) // update marker for every flag
     }
 
-    useEffect(() => {setValue(getValue())}, [cell.isOpen]) // update value when any cell is opened
+    useEffect(() => {
+        setValue(getValue())
+    }, [cell.isOpen]) // update value when any cell is opened
 
     function getValue() {
         let cellValue = ''
@@ -32,6 +37,6 @@ export default function Cell({cell, onOpen, onFlag, onEndGame}) {
     }
 
     return (
-        <div className={cell.isOpen ? "cell open" : "cell"} onClick={handleClick} onContextMenu={handleFlag} >{value}  </div>
+        <div className={cell.isOpen ? "cell open" : "cell" } onClick={handleClick} onContextMenu={handleFlag} >{value}  </div>
     )
 }
