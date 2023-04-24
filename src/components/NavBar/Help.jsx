@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Tooltip, Typography } from "@mui/material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { useState } from "react";
 
@@ -7,9 +7,11 @@ export default function Help() {
 
     return (
         <>
-            <IconButton color="primary" component="label" onClick={() => setOpen(true)} > 
-                <HelpOutlineIcon fontSize="large" sx={{ color: 'rgb(20, 30, 179)' }} />
-            </IconButton>
+            <Tooltip title="Help">
+                <IconButton color="primary" component="label" onClick={() => setOpen(true)} > 
+                    <HelpOutlineIcon fontSize="large" sx={{ color: 'rgb(20, 30, 179)' }} />
+                </IconButton>
+            </Tooltip>
             <Dialog open={open} onClose={() => setOpen(false)} scroll='paper' >
                 <DialogTitle variant='h5'> Help</DialogTitle>
                 <DialogContent dividers >

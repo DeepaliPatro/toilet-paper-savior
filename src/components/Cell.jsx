@@ -1,4 +1,5 @@
 // import { useEffect, useState } from 'react'
+import 'animate.css';
 import './Cell.css'
 
 

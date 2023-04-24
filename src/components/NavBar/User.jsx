@@ -1,6 +1,6 @@
 import { Box, Dialog, DialogActions, IconButton, Typography, Button, DialogContent, TextField, Tooltip, Menu, MenuItem } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function User({user, onLogin}) {
     const [anchorEl, setAnchorEl] = useState(null)
@@ -14,13 +14,16 @@ export default function User({user, onLogin}) {
         setAnchorEl(null)
     }
     const handleLogin = () => {
-        setOpen(true)
         setAnchorEl(null)
+        setOpen(true)
     }
     const handleLogout = () => {
         onLogin('')
         setAnchorEl(null)
     }
+    useEffect(() => {
+        localStorage.setItem('username', JSON.stringify(user)); //changed
+      }, [user]);
     return (
         <>
             <Tooltip title="Profile">

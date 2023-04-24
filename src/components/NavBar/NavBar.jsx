@@ -4,10 +4,14 @@ import GameSettings from './GameSettings';
 import Help from './Help';
 import User from './User';
 
+function getUserFromLS() {
+    const username = localStorage.getItem('username')
+    return username ? JSON.parse(username) : ''
+}
 
 export default function NavBar({board, setBoard}) {
     
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState(getUserFromLS())
 
     return (
         <header className="nav-bar">
