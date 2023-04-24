@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 // get board from local storage
 const getBoardFromLS = () => {
     const grid = localStorage.getItem('grid')
-    if(grid[0].length > 0) {
+    if(grid?.length > 0) {
         return JSON.parse(grid)
     } else {
         return null
