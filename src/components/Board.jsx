@@ -5,16 +5,30 @@ import { useEffect, useState } from "react";
 import { openAdjacentEmpty } from "../utils/open-adjacent-empty";
 import { revealBoard } from "../utils/reveal-board";
 import { countClosed } from "../utils/countClosed";
+import { Button } from "@mui/material";
 
-
+// get board from local storage
+const getBoardFromLS = () => {
+    const grid = localStorage.getItem('grid')
+    if(grid[0].length > 0) {
+        return JSON.parse(grid)
+    } else {
+        return null
+    }
+}
 export default function Board({board}) {
-    const [grid, setGrid] = useState(null)
+    const [grid, setGrid] = useState(getBoardFromLS())
     const [result, setResult] = useState('')
 
     // initialize grid on changing the grid size or total mines
     useEffect(() => {
         setGrid(initGrid(board.rows, board.columns, board.mines))
     }, [board])
+
+    useEffect(() => {
+        // add board to local storage
+        localStorage.setItem('grid', JSON.stringify(grid))
+    }, [grid])
 
     const handleOpenCell = (row, column) => {
         
@@ -74,6 +88,15 @@ export default function Board({board}) {
                     })}
                 </div>
             </div>
+            <footer>
+                <Button 
+                variant="contained" 
+                sx={{backgroundColor: "rgb(20, 30, 179)", borderRadius: '10px'}}
+                onClick={() => setGrid(initGrid(board.rows, board.columns, board.mines))}
+                >
+                    Restart
+                </Button>
+            </footer>
         </div>
     )
 }

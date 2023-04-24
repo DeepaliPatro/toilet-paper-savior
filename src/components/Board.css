@@ -12,3 +12,6 @@
     flex-direction: row;
     gap: 3px;
 }
+footer {
+    margin-top: 10px;
+}

@@ -22,6 +22,7 @@ That's about it! Good luck!
 
 - React 
 - CSS
+- Material UI
 
 ## ⚙️ Application features
 
