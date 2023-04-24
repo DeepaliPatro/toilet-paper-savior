@@ -28,7 +28,25 @@ That's about it! Good luck!
 
 ## ⚙️ Application features
 
+- Login / Logout
+- Change the size of the board and number of mines to change difficulty level
+- Start a new game at anytime
+
+
 ###  👩🏻‍💻 In the pipeline 
+
+- game state should be persistent on the client so refreshing the page or navigating away/back does not lose the current game
+- Show score of current player
+- Show high score
+- Timer and timed game
+- click counter
+- mineplacement that avoids guessing
+- hints / tips:
+    - reveal board
+    - set one random flag
+- Replay button
+- Game sounds
+
 
 ### 👀 Behind the scenes:
 
