@@ -2,6 +2,8 @@
 
 Remember the time when we all saved planet earth from the deadly pandemic with nothing but toilet paper? Well, if you were hiding in your safehouse and missed out on all the avtion, here is your chance to be the Toilet-paper-savior.
 
+Try it [here](https://6445ed5f954f5a53b417aa02--elegant-kelpie-6aa7bb.netlify.app/).
+
 This game is my take on the classic single-player puzzle game, Minesweeper. Here are the basic rules:
 
 - The game board contains hidden viruses under some of the tiles. The size of the board and number of viruses varies depending on the difficulty level.
